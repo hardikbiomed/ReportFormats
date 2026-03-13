@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Patient List</title>
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:       #0b7a6e;
+      --primary-light: #e6f4f2;
+      --primary-mid:   #1aab99;
+      --accent:        #0066cc;
+      --accent-light:  #e8f0fb;
+      --text-main:     #1a1a2e;
+      --text-sub:      #5a6272;
+      --text-muted:    #9aa0ac;
+      --border:        #e8ecf0;
+      --surface:       #ffffff;
+      --bg:            #f0f4f3;
+      --danger:        #e53935;
+      --warning:       #f57c00;
+      --success:       #2e7d32;
+      --radius-card:   16px;
+      --radius-btn:    10px;
+      --shadow-card:   0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-search: 0 4px 16px rgba(11,122,110,0.12);
+      --nav-h:         64px;
+      --header-h:      60px;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout shell ── */
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ════════════════════════════════
+       TOP HEADER
+    ════════════════════════════════ */
+    .top-header {
+      background: var(--primary);
+      padding: 14px 16px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(11,122,110,0.25);
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.2px;
+    }
+
+    .header-subtitle {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 1px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      border: 2px solid rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .notif-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .notif-btn svg { fill: #fff; }
+
+    .notif-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 8px;
+      height: 8px;
+      background: #ff5252;
+      border-radius: 50%;
+      border: 1.5px solid var(--primary);
+    }
+
+    /* ════════════════════════════════
+       STATS BAR
+    ════════════════════════════════ */
+    .stats-bar {
+      background: var(--primary);
+      padding: 0 16px 14px;
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .stat-chip {
+      flex: 1;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    /* ════════════════════════════════
+       SEARCH + FILTER
+    ════════════════════════════════ */
+    .search-section {
+      padding: 14px 16px 10px;
+      flex-shrink: 0;
+      background: var(--bg);
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border-radius: 14px;
+      box-shadow: var(--shadow-search);
+      border: 1.5px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--primary-mid);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--text-muted);
+      display: flex;
+      pointer-events: none;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 13px 40px 13px 44px;
+      font-size: 15px;
+      background: transparent;
+      color: var(--text-main);
+      border-radius: 14px;
+    }
+
+    .search-input::placeholder { color: var(--text-muted); }
+
+    .search-clear {
+      position: absolute;
+      right: 12px;
+      background: var(--border);
+      border: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      display: none;
+    }
+
+    .search-input:not(:placeholder-shown) ~ .search-clear { display: flex; }
+
+    /* Filter chips */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+
+    .filter-row::-webkit-scrollbar { display: none; }
+
+    .filter-chip {
+      flex-shrink: 0;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .filter-chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .filter-chip .chip-count {
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+      padding: 1px 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .filter-chip:not(.active) .chip-count {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* ════════════════════════════════
+       LIST SECTION
+    ════════════════════════════════ */
+    .list-header {
+      padding: 6px 16px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .list-count {
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .sort-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 600;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .patient-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 16px;
+      padding-bottom: calc(var(--nav-h) + 16px);
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .patient-list::-webkit-scrollbar { width: 4px; }
+    .patient-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* ── Patient Card ── */
+    .patient-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.15s, box-shadow 0.15s;
+      animation: fadeSlideIn 0.25s ease both;
+    }
+
+    .patient-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      padding: 14px 14px 10px;
+      gap: 12px;
+    }
+
+    /* Avatar */
+    .patient-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .avatar-teal    { background: linear-gradient(135deg, #0b7a6e, #1aab99); }
+    .avatar-blue    { background: linear-gradient(135deg, #1565c0, #1976d2); }
+    .avatar-purple  { background: linear-gradient(135deg, #6a1b9a, #8e24aa); }
+    .avatar-orange  { background: linear-gradient(135deg, #e65100, #f57c00); }
+    .avatar-pink    { background: linear-gradient(135deg, #ad1457, #d81b60); }
+    .avatar-indigo  { background: linear-gradient(135deg, #283593, #3949ab); }
+
+    .card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .patient-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .patient-uhid {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .badge-male   { background: #e3f2fd; color: #1565c0; }
+    .badge-female { background: #fce4ec; color: #ad1457; }
+    .badge-other  { background: #f3e5f5; color: #6a1b9a; }
+
+    .meta-age {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .card-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .last-visit {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .status-active   { background: #43a047; }
+    .status-pending  { background: #f57c00; }
+    .status-inactive { background: #9e9e9e; }
+
+    .status-label {
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+
+    .status-label.active   { color: #2e7d32; }
+    .status-label.pending  { color: #e65100; }
+    .status-label.inactive { color: #757575; }
+
+    /* Card divider + actions */
+    .card-actions {
+      display: flex;
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .card-action-btn {
+      flex: 1;
+      padding: 10px 8px;
+      border: none;
+      background: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: background 0.15s;
+    }
+
+    .card-action-btn:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+
+    .card-action-btn:active { background: var(--border); }
+
+    .btn-view   { color: var(--primary); }
+    .btn-report { color: var(--accent); }
+    .btn-more   { color: var(--text-muted); }
+
+    /* ── Skeleton loading ── */
+    .skeleton { animation: shimmer 1.4s infinite linear; }
+
+    @keyframes shimmer {
+      0%   { background-position: -300px 0; }
+      100% { background-position: 300px 0; }
+    }
+
+    .skel-block {
+      background: linear-gradient(90deg, #e8ecf0 25%, #f5f5f5 50%, #e8ecf0 75%);
+      background-size: 600px 100%;
+      border-radius: 6px;
+    }
+
+    .skeleton-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .skel-avatar { width: 50px; height: 50px; border-radius: 14px; flex-shrink: 0; }
+    .skel-lines  { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .skel-line   { height: 12px; border-radius: 6px; }
+
+    /* ── Empty state ── */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .empty-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .empty-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .empty-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════
+       PAGINATION
+    ════════════════════════════════ */
+    .pagination {
+      padding: 8px 16px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-shrink: 0;
+      background: var(--bg);
+    }
+
+    .page-info {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-sub);
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .page-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: var(--text-sub);
+    }
+
+    .page-btn:not(:disabled):hover,
+    .page-btn:not(:disabled):active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .page-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* ════════════════════════════════
+       BOTTOM NAV
+    ════════════════════════════════ */
+    .bottom-nav {
+      height: var(--nav-h);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: stretch;
+      flex-shrink: 0;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+    }
+
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      position: relative;
+      transition: color 0.15s;
+    }
+
+    .nav-item.active { color: var(--primary); }
+
+    .nav-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px 2px 0 0;
+    }
+
+    .nav-item svg { transition: transform 0.15s; }
+    .nav-item.active svg { transform: scale(1.1); }
+
+    /* FAB */
+    .fab {
+      position: fixed;
+      bottom: calc(var(--nav-h) + 16px);
+      right: 20px;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-mid));
+      box-shadow: 0 4px 16px rgba(11,122,110,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      z-index: 10;
+    }
+
+    .fab:active {
+      transform: scale(0.93);
+      box-shadow: 0 2px 8px rgba(11,122,110,0.3);
+    }
+
+    .fab svg { fill: #fff; }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Top Header ── -->
+  <header class="top-header">
+    <div class="header-left">
+      <span class="header-title">Patients</span>
+      <span class="header-subtitle">City General Hospital</span>
+    </div>
+    <div class="header-right">
+      <button class="notif-btn" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        <span class="notif-badge"></span>
+      </button>
+      <div class="header-avatar" aria-label="User: HS">HS</div>
+    </div>
+  </header>
+
+  <!-- ── Stats Bar ── -->
+  <div class="stats-bar">
+    <div class="stat-chip">
+      <div class="stat-value">2</div>
+      <div class="stat-label">Total</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-value">1</div>
+      <div class="stat-label">Active</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-value">1</div>
+      <div class="stat-label">Pending</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-value">0</div>
+      <div class="stat-label">Today</div>
+    </div>
+  </div>
+
+  <!-- ── Search + Filters ── -->
+  <section class="search-section">
+    <div class="search-box">
+      <span class="search-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </span>
+      <input
+        class="search-input"
+        id="searchInput"
+        type="search"
+        placeholder="Search by name, UHID…"
+        autocomplete="off"
+        oninput="handleSearch(this.value)"
+        aria-label="Search patients"
+      />
+      <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="filter-row" role="group" aria-label="Filter patients">
+      <button class="filter-chip active" id="chip-all"    onclick="setFilter('all')"    aria-pressed="true">All <span class="chip-count" id="cnt-all">2</span></button>
+      <button class="filter-chip"        id="chip-active" onclick="setFilter('active')" aria-pressed="false">Active <span class="chip-count" id="cnt-active">1</span></button>
+      <button class="filter-chip"        id="chip-male"   onclick="setFilter('male')"   aria-pressed="false">Male <span class="chip-count" id="cnt-male">1</span></button>
+      <button class="filter-chip"        id="chip-female" onclick="setFilter('female')" aria-pressed="false">Female <span class="chip-count" id="cnt-female">1</span></button>
+    </div>
+  </section>
+
+  <!-- ── List Header ── -->
+  <div class="list-header">
+    <span class="list-count" id="listCount">2 patients</span>
+    <button class="sort-btn" onclick="toggleSort()" aria-label="Sort patients">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/>
+      </svg>
+      Sort: A–Z
+    </button>
+  </div>
+
+  <!-- ── Patient List ── -->
+  <main class="patient-list" id="patientList" aria-label="Patient list">
+
+    <!-- Skeleton placeholders (shown while loading) -->
+    <div id="skeletons">
+      <div class="skeleton-card"><div class="skel-block skel-avatar skeleton"></div><div class="skel-lines"><div class="skel-block skel-line skeleton" style="width:60%"></div><div class="skel-block skel-line skeleton" style="width:40%"></div><div class="skel-block skel-line skeleton" style="width:50%"></div></div></div>
+      <div class="skeleton-card"><div class="skel-block skel-avatar skeleton"></div><div class="skel-lines"><div class="skel-block skel-line skeleton" style="width:70%"></div><div class="skel-block skel-line skeleton" style="width:35%"></div><div class="skel-block skel-line skeleton" style="width:55%"></div></div></div>
+    </div>
+
+    <!-- Real patient cards (rendered by JS) -->
+    <div id="cardContainer" style="display:none"></div>
+
+    <!-- Empty state -->
+    <div id="emptyState" class="empty-state" style="display:none">
+      <div class="empty-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0b7a6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="empty-title">No patients found</div>
+      <div class="empty-sub">Try adjusting your search<br>or filters to find patients.</div>
+    </div>
+
+  </main>
+
+  <!-- ── Pagination ── -->
+  <div class="pagination" id="paginationBar">
+    <button class="page-btn" id="prevBtn" onclick="changePage(-1)" disabled aria-label="Previous page">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span class="page-info" id="pageInfo">Page 1 / 1</span>
+    <button class="page-btn" id="nextBtn" onclick="changePage(1)"  disabled aria-label="Next page">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <!-- ── Bottom Navigation ── -->
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" aria-label="Patients">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      Patients
+    </button>
+    <button class="nav-item" aria-label="Reports">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm2-4h8v2H8zm0-4h8v2H8zm0-4h5v2H8z"/></svg>
+      Reports
+    </button>
+    <button class="nav-item" aria-label="Schedule">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      Schedule
+    </button>
+    <button class="nav-item" aria-label="Settings">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+      Settings
+    </button>
+  </nav>
+
+  <!-- FAB: Add Patient -->
+  <button class="fab" onclick="addPatient()" aria-label="Add new patient">
+    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+  </button>
+
+</div>
+
+<script>
+// ── Sample patient data ──────────────────────────────────────────────────────
+const PATIENTS = [
+  {
+    id: 1,
+    initials: "TT",
+    name: "Test Test",
+    uhid: "UHID-00123",
+    gender: "female",
+    age: "30Y 00M",
+    lastVisit: "10 Mar 2026",
+    status: "inactive",
+    avatarClass: "avatar-pink",
+    department: "Gynecology"
+  },
+  {
+    id: 2,
+    initials: "JD",
+    name: "Jane Doe",
+    uhid: "UHID-00456",
+    gender: "male",
+    age: "25Y 03M",
+    lastVisit: "12 Mar 2026",
+    status: "active",
+    avatarClass: "avatar-teal",
+    department: "Orthopedics"
+  }
+];
+
+// ── State ───────────────────────────────────────────────────────────────────
+let currentFilter = "all";
+let currentSearch = "";
+let currentPage   = 1;
+const PAGE_SIZE   = 10;
+
+// ── Init: simulate brief load ────────────────────────────────────────────────
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    document.getElementById("skeletons").style.display = "none";
+    document.getElementById("cardContainer").style.display = "";
+    renderList();
+  }, 800);
+});
+
+// ── Filter + Search ──────────────────────────────────────────────────────────
+function getFiltered() {
+  return PATIENTS.filter(p => {
+    const matchFilter =
+      currentFilter === "all"    ? true :
+      currentFilter === "active" ? p.status === "active" :
+      currentFilter === "male"   ? p.gender === "male" :
+      currentFilter === "female" ? p.gender === "female" : true;
+
+    const q = currentSearch.toLowerCase();
+    const matchSearch = !q ||
+      p.name.toLowerCase().includes(q) ||
+      p.uhid.toLowerCase().includes(q);
+
+    return matchFilter && matchSearch;
+  });
+}
+
+function handleSearch(val) {
+  currentSearch = val;
+  currentPage = 1;
+  renderList();
+}
+
+function clearSearch() {
+  const inp = document.getElementById("searchInput");
+  inp.value = "";
+  currentSearch = "";
+  currentPage = 1;
+  renderList();
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  currentPage = 1;
+  ["all","active","male","female"].forEach(k => {
+    const chip = document.getElementById("chip-" + k);
+    chip.classList.toggle("active", k === f);
+    chip.setAttribute("aria-pressed", k === f ? "true" : "false");
+  });
+  renderList();
+}
+
+// ── Render ───────────────────────────────────────────────────────────────────
+function renderList() {
+  const filtered   = getFiltered();
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  const paginated = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  const container  = document.getElementById("cardContainer");
+  const emptyState = document.getElementById("emptyState");
+  const listCount  = document.getElementById("listCount");
+
+  listCount.textContent = filtered.length === 1
+    ? "1 patient"
+    : filtered.length + " patients";
+
+  if (paginated.length === 0) {
+    container.innerHTML = "";
+    emptyState.style.display = "flex";
+  } else {
+    emptyState.style.display = "none";
+    container.innerHTML = paginated.map(renderCard).join("");
+  }
+
+  // Pagination
+  document.getElementById("pageInfo").textContent = "Page " + currentPage + " / " + totalPages;
+  document.getElementById("prevBtn").disabled = currentPage <= 1;
+  document.getElementById("nextBtn").disabled = currentPage >= totalPages;
+}
+
+function renderCard(p) {
+  const genderClass = p.gender === "male" ? "badge-male" : p.gender === "female" ? "badge-female" : "badge-other";
+  const genderLabel = p.gender.charAt(0).toUpperCase() + p.gender.slice(1);
+  const genderIcon  = p.gender === "male"
+    ? '<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M9 9c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4zm4-6C9.13 3 6 6.13 6 10c0 3.08 1.75 5.76 4.32 7.11L9 19.5H7v2h2.5v2h2v-2H14v-2h-2l-1.32-2.39C13.25 15.76 15 13.08 15 10c0-3.87-3.13-7-7-7z"/></svg>'
+    : '<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9.24 2 7 4.24 7 7c0 2.26 1.42 4.19 3.45 4.78L9.5 13H8v2h1.5l-1 3H10l1-3 1 3h1.5l-1-3H14v-2h-1.5l-.95-1.22C13.58 11.19 15 9.26 15 7c0-2.76-2.24-5-3-5z"/></svg>';
+
+  const statusClass = p.status === "active" ? "active" : p.status === "pending" ? "pending" : "inactive";
+  const statusText  = p.status.charAt(0).toUpperCase() + p.status.slice(1);
+  const dotClass    = "status-" + p.status;
+
+  return `
+  <article class="patient-card" role="article" aria-label="Patient ${p.name}">
+    <div class="card-top">
+      <div class="patient-avatar ${p.avatarClass}" aria-hidden="true">${p.initials}</div>
+      <div class="card-info">
+        <div class="patient-name">${p.name}</div>
+        <div class="patient-uhid">${p.uhid} &bull; ${p.department}</div>
+        <div class="card-meta-row">
+          <span class="meta-badge ${genderClass}">${genderIcon} ${genderLabel}</span>
+          <span class="meta-age">${p.age}</span>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="last-visit">Last visit<br>${p.lastVisit}</div>
+        <div class="status-label ${statusClass}">
+          <span class="status-dot ${dotClass}"></span>${statusText}
+        </div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="card-action-btn btn-view"   onclick="viewPatient(${p.id})"   aria-label="View patient ${p.name}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        View
+      </button>
+      <button class="card-action-btn btn-report" onclick="viewReport(${p.id})"   aria-label="Open report for ${p.name}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Report
+      </button>
+      <button class="card-action-btn btn-more"   onclick="moreOptions(${p.id})"  aria-label="More options for ${p.name}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+        More
+      </button>
+    </div>
+  </article>`;
+}
+
+// ── Pagination ───────────────────────────────────────────────────────────────
+function changePage(delta) {
+  currentPage += delta;
+  renderList();
+  document.getElementById("patientList").scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// ── Sort ─────────────────────────────────────────────────────────────────────
+const PATIENTS_ORIGINAL_ORDER = PATIENTS.slice(); // preserve insertion order
+let sortAsc = true;
+function toggleSort() {
+  sortAsc = !sortAsc;
+  if (sortAsc) {
+    PATIENTS.sort((a, b) => a.name.localeCompare(b.name));
+  } else {
+    PATIENTS.sort((a, b) => b.name.localeCompare(a.name));
+  }
+  // Update button label to reflect current sort direction
+  const btn = document.querySelector(".sort-btn");
+  if (btn) {
+    const textNode = btn.lastChild;
+    if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+      textNode.textContent = sortAsc ? " Sort: A\u2013Z" : " Sort: Z\u2013A";
+    }
+  }
+  currentPage = 1;
+  renderList();
+}
+
+// ── Actions (stubs) ──────────────────────────────────────────────────────────
+function viewPatient(id)  { alert("Open patient profile: " + id); }
+function viewReport(id)   { alert("Open report for patient: " + id); }
+function moreOptions(id)  { alert("More options for patient: " + id); }
+function addPatient()     { alert("Open Add Patient form"); }
+</script>
+</body>
+</html>
