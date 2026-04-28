@@ -18,7 +18,6 @@ body{
   color:#000;
 }
 
-/* ================= PAGE ================= */
 .page{
   padding:12px;
 }
@@ -27,10 +26,9 @@ body{
 .header{
   border-bottom:2px solid #000;
   padding-bottom:6px;
-  margin-bottom:8px;
+  margin-bottom:6px;
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
 }
 
 .hospital-name{
@@ -48,51 +46,57 @@ body{
   margin-top:4px;
 }
 
-/* ================= PATIENT TABLE ================= */
+/* ================= PATIENT ================= */
 .patient-table{
   width:100%;
   border-collapse:collapse;
   font-size:10px;
-  margin-top:6px;
+  margin-top:4px;
 }
 
 .patient-table td{
-  border:none;
-  padding:5px;
+  padding:3px 5px;
 }
 
-/* NEW: Divider below patient section */
+/* ================= DIVIDER ================= */
 .patient-divider{
   border-top:2px solid #000;
-  margin-top:6px;
-  margin-bottom:8px;
+  margin:4px 0 6px 0;
 }
 
 /* ================= SECTION TITLE ================= */
 .section-title{
   font-weight:700;
   font-size:11px;
-  margin-top:10px;
-  margin-bottom:4px;
+  margin:6px 0 2px 0;
   border-bottom:1px solid #000;
-  padding-bottom:2px;
+  padding-bottom:1px;
 }
 
-/* ================= CONTENT ================= */
-.vitals-line,
-.allergy-line,
-.complaint-line{
+/* ================= VITALS (TOP LINE) ================= */
+.vitals-line{
   font-size:10px;
   margin-bottom:6px;
 }
 
-.diagnosis-line{
-  font-weight:600;
+/* ================= STRICT SINGLE ROW (NO WRAP) ================= */
+.single-row{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
   font-size:10px;
-  margin-bottom:6px;
 }
 
-/* ================= MEDICATION TABLE ================= */
+.single-row td{
+  width:33.33%;
+  vertical-align:top;
+  padding:2px 4px;
+  white-space:nowrap;   /* IMPORTANT: prevents wrapping */
+  overflow:hidden;
+  text-overflow:clip;
+}
+
+/* ================= MED TABLE ================= */
 .med-table{
   width:100%;
   border-collapse:collapse;
@@ -100,20 +104,16 @@ body{
   margin-top:4px;
 }
 
-.med-table th{
-  border:1px solid #000;
-  padding:5px;
-  text-align:left;
-}
-
+.med-table th,
 .med-table td{
   border:1px solid #000;
-  padding:5px;
+  padding:4px;
+  text-align:left;
 }
 
 /* ================= SIGNATURE ================= */
 .signature{
-  margin-top:25px;
+  margin-top:18px;
   display:flex;
   justify-content:space-between;
   font-size:10px;
@@ -122,16 +122,16 @@ body{
 .sig-line{
   border-top:1px solid #000;
   width:160px;
-  margin-top:30px;
+  margin-top:25px;
 }
 
 /* ================= FOOTER ================= */
 .footer{
-  margin-top:10px;
+  margin-top:8px;
   font-size:9px;
   text-align:center;
   border-top:1px solid #000;
-  padding-top:4px;
+  padding-top:3px;
 }
 
 </style>
@@ -168,29 +168,26 @@ body{
     </tr>
     <tr>
       <td><strong>UHID:</strong> {{patientid}}</td>
-      <td></td>
       <td><strong>Phone:</strong> {{phonenumber}}</td>
+      <td></td>
     </tr>
   </table>
 
-  <!-- NEW DIVIDER -->
   <div class="patient-divider"></div>
 
-  <!-- VITALS -->
-  <div class="section-title">Vitals</div>
-  <div class="vitals-line">{{vitals}}</div>
+  <!-- VITALS (SEPARATE ABOVE) -->
+  <div class="vitals-line">
+    {{vitals}}
+  </div>
 
-  <!-- ALLERGIES -->
-  <div class="section-title">Allergies</div>
-  <div class="allergy-line">{{allergies}}</div>
-
-  <!-- COMPLAINTS -->
-  <div class="section-title">Chief Complaints</div>
-  <div class="complaint-line">{{complaints}}</div>
-
-  <!-- DIAGNOSIS -->
-  <div class="section-title">Diagnosis</div>
-  <div class="diagnosis-line">{{diagnosis}}</div>
+  <!-- SINGLE FORCED ROW -->
+  <table class="single-row">
+    <tr>
+      <td><strong>Complaints:</strong> {{complaints}}</td>
+      <td><strong>Allergies:</strong> {{allergies}}</td>
+      <td><strong>Diagnosis:</strong> {{diagnosis}}</td>
+    </tr>
+  </table>
 
   <!-- MEDICATION -->
   <div class="section-title">Prescription</div>
@@ -211,7 +208,7 @@ body{
 
   <!-- NOTES -->
   <div class="section-title">Notes</div>
-  <div class="vitals-line">{{note}}</div>
+  <div style="font-size:10px;">{{note}}</div>
 
   <!-- SIGNATURE -->
   <div class="signature">

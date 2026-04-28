@@ -1,0 +1,251 @@
+<!DOCTYPE html [
+    <!ENTITY gt   "&#62;">
+    <!ENTITY lt   "&#60;">
+    <!ENTITY nbsp "&#160;">
+]>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Billing</title>
+
+<style>
+@page{
+  size:A4;
+  margin:34mm 12mm 24mm 12mm;
+
+  @top-center{ content:element(pageheader); }
+  @bottom-center{ content:element(footer); }
+
+  @bottom-left{
+    content:"";
+    display:block;
+    width:100%;
+    border-top:1px solid #000;
+    margin-bottom:6mm;
+  }
+}
+
+/* ================= GLOBAL ================= */
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  font-size:11px;
+  color:#000;
+}
+
+.page{
+  padding:0;
+}
+
+/* ================= SPACING (PDF SAFE) ================= */
+.space-6{ height:6px; }
+.space-10{ height:10px; }
+
+/* ================= HEADER ================= */
+.header{
+  position:running(pageheader);
+  border-bottom:2px solid #000;
+  padding-bottom:6px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  width:100%;
+}
+
+.hospital-name{
+  font-size:16px;
+  font-weight:700;
+}
+
+.hospital-tagline{
+  font-size:10px;
+  margin-top:2px;
+}
+
+.hospital-details{
+  font-size:10px;
+  margin-top:4px;
+}
+
+/* ================= PATIENT ================= */
+.patient-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:10px;
+}
+
+.patient-table td{
+  padding:4px 0;
+}
+
+.patient-divider{
+  border-top:2px solid #000;
+}
+
+/* ================= BILLING ================= */
+.section-title{
+  font-weight:700;
+  margin-bottom:4px;
+  border-bottom:1px solid #000;
+  padding-bottom:2px;
+}
+
+/* ================= BILLING TABLE ================= */
+.billing-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:10px;
+  table-layout:auto;
+}
+
+.billing-table thead{
+  display:table-header-group;
+}
+
+.billing-table tr{
+  page-break-inside:avoid;
+}
+
+.billing-table th,
+.billing-table td{
+  border:1px solid #000;
+  padding:5px;
+}
+
+/* Column widths */
+.billing-table th:nth-child(1),
+.billing-table td:nth-child(1){ width:40%; }
+
+.billing-table th:nth-child(2),
+.billing-table td:nth-child(2){
+  width:10%;
+  text-align:center;
+}
+
+.billing-table th:nth-child(3),
+.billing-table td:nth-child(3),
+.billing-table th:nth-child(4),
+.billing-table td:nth-child(4),
+.billing-table th:nth-child(5),
+.billing-table td:nth-child(5){
+  text-align:right;
+}
+
+/* ================= SIGNATURE ================= */
+.signature-table{
+  width:100%;
+}
+
+.signature-cell{
+  text-align:right;
+}
+
+.signature-box{
+  display:inline-block;
+  text-align:center;
+}
+
+.sig-text{
+  margin-bottom:6px;
+}
+
+.sig-line{
+  border-top:1px solid #000;
+  width:200px;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  position:running(footer);
+  font-size:9px;
+  text-align:center;
+  border-top:1px solid #000;
+  padding-top:4px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="hospital-name">CITY General Hospital</div>
+      <div class="hospital-tagline">Care • Compassion • Commitment</div>
+      <div class="hospital-details">
+        City Main Road, Ahmedabad | Ph: 987656789 | Email: dyummy@gmail.com
+      </div>
+    </div>
+
+    <div style="text-align:right; font-size:10px;">
+      <strong>Bill No:</strong> {{documentnumber}}<br/>
+      <strong>Date:</strong> {{billingdate}}
+    </div>
+  </div>
+
+  <div class="space-6"></div>
+
+  <!-- PATIENT -->
+  <table class="patient-table">
+    <tr>
+      <td><strong>Name:</strong> {{patientname}}</td>
+      <td><strong>Age:</strong> {{patientage}}</td>
+      <td><strong>Gender:</strong> {{patientgender}}</td>
+    </tr>
+    <tr>
+      <td><strong>UHID:</strong> {{patientid}}</td>
+      <td><strong>Phone:</strong> {{phonenumber}}</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <div class="space-6"></div>
+  <div class="patient-divider"></div>
+  <div class="space-6"></div>
+
+  <!-- BILLING -->
+  <div class="section-title">Billing Details</div>
+
+  <div class="space-6"></div>
+
+  <table class="billing-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Unit Price</th>
+        <th>Tax</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{billingitems}}
+    </tbody>
+  </table>
+
+  <div class="space-10"></div>
+
+  <!-- SIGNATURE -->
+  <table class="signature-table">
+    <tr>
+      <td></td>
+      <td class="signature-cell">
+        <div class="signature-box">
+          <div class="sig-text">Authorized Signature</div>
+          <div class="sig-line"></div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Computer generated bill – valid without signature.
+  </div>
+
+</div>
+
+</body>
+</html>
