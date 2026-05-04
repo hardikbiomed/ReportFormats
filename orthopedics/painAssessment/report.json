@@ -1,0 +1,200 @@
+{
+  "reporttemplateUUID" : "b2ab21f0-8eeb-4ed4-a02e-e03902cfc762",
+  "name" : "Musculoskeletal Pain & Functional Assessment Form",
+  "reportTemplateSegments" : [ {
+    "segmentUUID" : "5e5aa549-4e7c-4c03-88fd-2399d008d53a",
+    "category" : "text",
+    "title" : "UHID",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 1
+  }, {
+    "segmentUUID" : "f34c2b27-c8c4-4664-9487-493e6fb73e52",
+    "category" : "text",
+    "title" : "Assessment Date",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 2
+  }, {
+    "segmentUUID" : "6ca9be53-907e-4272-a92b-9b96e1c2638a",
+    "category" : "text",
+    "title" : "Affected Joint Region",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 3
+  }, {
+    "segmentUUID" : "d4f32844-6ec0-4486-8758-4ea84ec75673",
+    "category" : "table",
+    "title" : "Pain Score",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "SCORE(1-5)", "SCORE(6-10)" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 4
+  }, {
+    "segmentUUID" : "edace959-62d5-4f9d-846f-33aba440dbc2",
+    "category" : "text",
+    "title" : "Pain Scale",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 5
+  }, {
+    "segmentUUID" : "ced11610-4c65-497b-ac36-88487987f08f",
+    "category" : "text",
+    "title" : "Duration Of Pain",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 6
+  }, {
+    "segmentUUID" : "1fbab965-bc12-495c-83e6-160bb2a92008",
+    "category" : "text",
+    "title" : "Pain At Rest",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 7
+  }, {
+    "segmentUUID" : "0f5886fc-4e10-46eb-be38-1f3fa485fab9",
+    "category" : "text",
+    "title" : "Pain With Movement",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 8
+  }, {
+    "segmentUUID" : "5d341142-b671-4a4f-979c-fe0ff31eb4e7",
+    "category" : "text",
+    "title" : "Night Pain",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 9
+  }, {
+    "segmentUUID" : "7eb75510-e55e-45d5-9cd9-f6a69996a469",
+    "category" : "text",
+    "title" : "Active Range Of Motion",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 10
+  }, {
+    "segmentUUID" : "01ed3157-96a7-45de-8fce-c100429e7bd9",
+    "category" : "text",
+    "title" : "Passive Range Of Motion",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 11
+  }, {
+    "segmentUUID" : "de0a508c-193a-4ac4-b0c5-dc1e72839f50",
+    "category" : "text",
+    "title" : "Functional Limitation Walking",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 12
+  }, {
+    "segmentUUID" : "f9f2373a-7c51-45ae-bd4b-608573de77a2",
+    "category" : "text",
+    "title" : "Functional Limitation Sitting",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 13
+  }, {
+    "segmentUUID" : "4a75db26-5fe4-438f-afba-f0eb8055faef",
+    "category" : "text",
+    "title" : "Functional LimitatiOn Lifting",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 14
+  }, {
+    "segmentUUID" : "b5fba869-6a78-4b7d-aa4b-89044e7ef387",
+    "category" : "text",
+    "title" : "Functional Limitation Stairs",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 15
+  }, {
+    "segmentUUID" : "70de79b2-efb9-4716-badc-12176358b8e0",
+    "category" : "text",
+    "title" : "Gait Assessment",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 16
+  }, {
+    "segmentUUID" : "56243c58-c582-458a-9c07-0808cd31eb08",
+    "category" : "text",
+    "title" : "Muscle Power Grading",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 17
+  }, {
+    "segmentUUID" : "27851f2e-f50c-471f-afe8-8da7a17ca05b",
+    "category" : "text",
+    "title" : "Clinical Impression",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 18
+  }, {
+    "segmentUUID" : "9e6ea916-bf9f-4564-8ac0-b1f88c1aa338",
+    "category" : "text",
+    "title" : "Recommendation",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 19
+  } ],
+  "createdOn" : "2025-12-23",
+  "createdBy" : "Nischal",
+  "department" : "Orthopedics",
+  "approvalCategory" : null,
+  "version" : 0
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html [
+        <!ENTITY gt   "&#62;">  <!-- Greater than sign -->
+        <!ENTITY lt   "&#60;">  <!-- Less than sign -->
+        <!ENTITY nbsp "&#160;"> <!-- Non-breaking space -->
+]>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+<title>Orthopedic_functional_pain_assessment</title>
+
+<style>
+/* ================= PAGE SETUP ================= */
+@page{
+  size:A4;
+  margin:32mm 12mm 22mm 12mm;
+
+  @top-center{
+    content:element(pageheader);
+  }
+
+  @bottom-center{
+    content:element(footer);
+  }
+
+  @bottom-left{
+    content:"";
+    display:block;
+    width:100%;
+    border-top:1px solid #0b5470;
+    margin-bottom:6mm;
+  }
+}
+
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  font-size:12px;
+  color:#111;
+}
+
+/* ================= HEADER ================= */
+.header{
+  position:running(pageheader);
+  height:26mm;
+  box-sizing:border-box;
+  border-bottom:2px solid #0b5470;
+  padding-bottom:6mm;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+
+.hospital-name{
+  font-size:15px;
+  font-weight:700;
+  color:#0b5470;
+}
+
+.hospital-sub{
+  font-size:11px;
+  color:#4a4a4a;
+}
+
+.patient-quick{
+  font-size:11px;
+  text-align:right;
+}
+
+.placeholder{
+  display:inline-block;
+  min-width:90px;
+  border-bottom:1px solid #999;
+}
+
+/* ================= TABLE ================= */
+table.form{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0 6px;
+}
+
+th.label{
+  width:32%;
+  text-align:left;
+  vertical-align:top;
+  font-weight:700;
+  color:#0b5470;
+  padding:6px 6px 6px 0;
+}
+
+td.field{
+  vertical-align:top;
+  padding:6px;
+  border:1px solid #e0e0e0;
+  border-radius:4px;
+  background:#fafafa;
+}
+
+.value{
+  display:block;
+  line-height:1.45;
+  min-height:32px;
+}
+
+.value.large{
+  min-height:70px;
+}
+
+/* ================= PAGE BREAK SAFETY ================= */
+tr,
+.section-block{
+  page-break-inside:avoid;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  position:running(footer);
+  padding-top:4mm;
+  font-size:10px;
+  color:#555;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+  <div>
+    <div class="hospital-name">CITY GENERAL HOSPITAL</div>
+    <div class="hospital-sub">Orthopedic functional &amp; pain assessment</div>
+  </div>
+  <div class="patient-quick">
+    patient name: <span class="placeholder">{{patientname}}</span><br/>
+    UHID: <span class="placeholder">{{uhid}}</span><br/>
+    Assessmentdate: <span class="placeholder">{{assessmentdate}}</span>
+  </div>
+</div>
+
+<!-- ================= FORM ================= -->
+<table class="form">
+<tbody>
+
+<tr>
+  <th class="label">Affected joint / region</th>
+  <td class="field"><div class="value">{{affectedjointregion}}</div></td>
+</tr>
+
+<tr>
+  <th class="label">Clinical impression</th>
+  <td class="field"><div class="value">{{clinicalimpression}}</div></td>
+</tr>
+
+<tr class="section-block">
+  <td class="field" colspan="2">
+    <strong>Pain assessment</strong>
+    <div class="value large">
+      Pain at rest: {{painatrest}}<br/>
+      Pain with movement: {{painwithmovement}}<br/>
+      Night pain: {{nightpain}}<br/>
+      Duration of pain: {{durationofpain}}<br/>
+      Pain scale: {{painscale}}<br/>
+      Pain score: {{painscore}}
+    </div>
+  </td>
+</tr>
+
+<tr class="section-block">
+  <td class="field" colspan="2">
+    <strong>Range of motion</strong>
+    <div class="value large">
+      Active range of motion: {{activerangeofmotion}}<br/>
+      Passive range of motion: {{passiverangeofmotion}}
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <th class="label">Muscle power grading</th>
+  <td class="field"><div class="value">{{musclepowergrading}}</div></td>
+</tr>
+
+<tr>
+  <th class="label">Gait assessment</th>
+  <td class="field"><div class="value">{{gaitassessment}}</div></td>
+</tr>
+
+<tr class="section-block">
+  <td class="field" colspan="2">
+    <strong>functional limitations</strong>
+    <div class="value large">
+      Walking: {{functionallimitationswalking}}<br/>
+      Stairs: {{functionallimitationstairs}}<br/>
+      Sitting: {{functionallimitationsitting}}<br/>
+      Lifting: {{functionallimitationlifting}}
+    </div>
+  </td>
+</tr>
+
+<tr class="section-block">
+  <td class="field" colspan="2">
+    <strong>Recommendation</strong>
+    <div class="value large">{{recommendation}}</div>
+  </td>
+</tr>
+
+</tbody>
+</table>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+  
+</div>
+
+</body>
+</html>

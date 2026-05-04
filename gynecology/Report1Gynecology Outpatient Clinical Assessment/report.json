@@ -1,0 +1,240 @@
+{
+  "reporttemplateUUID" : "cde89b6d-d2af-475d-8a34-db5642a1a2e4",
+  "name" : "Gynecology Outpatient Clinical Assessment",
+  "reportTemplateSegments" : [ {
+    "segmentUUID" : "dd306a10-c627-42cc-bfc1-1a8ee57e26a0",
+    "category" : "plaintext",
+    "title" : "UHID",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 1
+  }, {
+    "segmentUUID" : "e9bf4bee-289b-423d-8e7b-44fc3a184ce2",
+    "category" : "date",
+    "title" : "Visit Date",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 2
+  }, {
+    "segmentUUID" : "883308b9-c0ec-42c8-be1b-b0e065825414",
+    "category" : "number",
+    "title" : "Age",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 3
+  }, {
+    "segmentUUID" : "abbc5548-4106-439f-8bc8-274d70417bd2",
+    "category" : "checkbox",
+    "title" : "Marital Status",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Married", "Unmarried", "Widowed", "Divorced" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 4
+  }, {
+    "segmentUUID" : "edd9f737-6969-403a-bcd3-b33cb4fe11a7",
+    "category" : "text",
+    "title" : "Occupation",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 5
+  }, {
+    "segmentUUID" : "b5c07b1e-fe98-41ed-88c5-dc4d8a18f264",
+    "category" : "checkbox+text",
+    "title" : "Presenting Gynecological Complaints",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Abnormal uterine bleeding", "Lower abdominal pain", "White discharge", "Amenorrhea", "Dysmenorrhea", "Infertility", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 6
+  }, {
+    "segmentUUID" : "e6f1e459-9dee-4425-8ea3-53d8f89e03e1",
+    "category" : "number+dropdown",
+    "title" : "Duration Of Symptoms",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Days", "Weeks", "Months", "Years" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 7
+  }, {
+    "segmentUUID" : "a9474ca7-0be4-42ac-aaf3-5d9bec5c55a5",
+    "category" : "table",
+    "title" : "Menstrual History Summary",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Cycle length (days)", "Duration of flow (days)", "Regularity (Regular/Irregular)", "Amount (Scanty/Normal/Heavy)", "Dysmenorrhea (Yes/No)", "LMP" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 8
+  }, {
+    "segmentUUID" : "bff351a7-0239-450d-b880-c130c24ca495",
+    "category" : "table",
+    "title" : "Obstetric History Summary",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Pregnancy No", "Year", "Mode of Delivery", "Outcome" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 9
+  }, {
+    "segmentUUID" : "c810f219-f36a-4840-bfa7-326b24382028",
+    "category" : "radio+text",
+    "title" : "Current Contraceptive Usage",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "None", "Barrier", "OCP", "IUCD", "Injectable", "Sterilization", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 10
+  }, {
+    "segmentUUID" : "cc7fa0a8-b5f8-41d8-96ef-9c32e3dfea6e",
+    "category" : "checkbox+text",
+    "title" : "Past Gynecological Conditions",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "PCOS", "Fibroid", "Endometriosis", "PID", "Ovarian cyst", "Cervical pathology", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 11
+  }, {
+    "segmentUUID" : "0bb966d9-1e7e-4adf-ab1d-ac1f8ad0813c",
+    "category" : "yesno+table",
+    "title" : "Previous Pelvic Surgeries",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Procedure", "Year", "Indication" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 12
+  }, {
+    "segmentUUID" : "9dc0c859-000a-4f9e-ad08-0b72df5e582f",
+    "category" : "checkbox+text",
+    "title" : "Known Medical Illnesses",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Diabetes", "Hypertension", "Thyroid disorder", "Asthma", "Cardiac disease", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 13
+  }, {
+    "segmentUUID" : "45abbdf7-5d89-46a0-b45a-3dcbad8b6297",
+    "category" : "table",
+    "title" : "Current Medications",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Drug Name", "Dose", "Frequency", "Duration" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 14
+  }, {
+    "segmentUUID" : "9ae5bf92-aa4a-44eb-b7a0-99bcfa6f1f43",
+    "category" : "yesno+text",
+    "title" : "Drug or Food Allergies",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 15
+  }, {
+    "segmentUUID" : "bd4dfd7f-136f-4655-862b-af9d23f56741",
+    "category" : "text",
+    "title" : "General Physical Examination",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 16
+  }, {
+    "segmentUUID" : "db7fd51a-1176-421f-b580-b3b25cd43eec",
+    "category" : "text",
+    "title" : "Abdominal Examination Findings",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 17
+  }, {
+    "segmentUUID" : "8fbea856-805b-41f3-95ce-7d69da2a8b3f",
+    "category" : "text",
+    "title" : "Pelvic Examination Findings",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 18
+  }, {
+    "segmentUUID" : "715f6f47-605d-4d6f-9a5e-dd20f2562b54",
+    "category" : "text",
+    "title" : "Provisional Gynecological Diagnosis",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 19
+  }, {
+    "segmentUUID" : "83148f81-2121-4441-9270-a56921d16b9a",
+    "category" : "text",
+    "title" : "Differential Gynecological Diagnosis",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 20
+  }, {
+    "segmentUUID" : "bb52f71d-13e7-4145-8675-a0f6ddff355a",
+    "category" : "checkbox+table",
+    "title" : "Investigations Recommended",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "CBC", "Urine routine", "Ultrasound pelvis", "Pap smear", "TSH", "Beta hCG", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 21
+  }, {
+    "segmentUUID" : "5e1de0fb-a610-4711-b371-dc5086d49185",
+    "category" : "text",
+    "title" : "Initial Management Plan",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 22
+  }, {
+    "segmentUUID" : "c9213bdf-d1fb-4e80-bb50-7d3aaf04066a",
+    "category" : "text",
+    "title" : "Advice And Follow-up Instructions",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 23
+  } ],
+  "createdOn" : null,
+  "createdBy" : null,
+  "department" : "Gynecology",
+  "approvalCategory" : null,
+  "version" : 0
+}

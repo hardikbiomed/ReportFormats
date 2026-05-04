@@ -1,0 +1,200 @@
+{
+  "reporttemplateUUID" : "a40bb999-7288-414b-a437-83bf3e3129f2",
+  "name" : "Menstrual Disorder Evaluation Record",
+  "reportTemplateSegments" : [ {
+    "segmentUUID" : "2f7491f7-956a-4d34-9a06-f70821cc4504",
+    "category" : "text",
+    "title" : "UHID",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 1
+  }, {
+    "segmentUUID" : "4dd5a85d-af0f-494c-aa1d-7e125438222c",
+    "category" : "date",
+    "title" : "Assessment Date",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 2
+  }, {
+    "segmentUUID" : "6f94cec7-245b-4149-85f6-8d236767e8c4",
+    "category" : "number",
+    "title" : "Age at Menarche",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 3
+  }, {
+    "segmentUUID" : "50df6eff-820f-4e18-9324-5de520bbc191",
+    "category" : "radio",
+    "title" : "Cycle Regularity",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Regular", "Irregular" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 4
+  }, {
+    "segmentUUID" : "b754479f-a4d2-46a2-aea0-862ef3df786c",
+    "category" : "number+dropdown",
+    "title" : "Cycle Length",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Days" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 5
+  }, {
+    "segmentUUID" : "ab6b5a52-3234-4102-a86a-db4d5c57275d",
+    "category" : "number+dropdown",
+    "title" : "Duration Of Bleeding",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Days" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 6
+  }, {
+    "segmentUUID" : "ba9042a6-4ad7-4387-9160-3f6d26e22da1",
+    "category" : "radio",
+    "title" : "Amount Of Bleeding",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Scanty", "Normal", "Heavy" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 7
+  }, {
+    "segmentUUID" : "a29525f7-ac6b-4fd2-961a-34893d54e254",
+    "category" : "radio",
+    "title" : "Presence Of Clots",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Yes", "No" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 8
+  }, {
+    "segmentUUID" : "49cdabaa-5c72-4bb3-aa06-c08c650391ce",
+    "category" : "radio",
+    "title" : "Dysmenorrhea Severity",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "None", "Mild", "Moderate", "Severe" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 9
+  }, {
+    "segmentUUID" : "570003b1-2346-491b-80e8-1a5c94e1f3ac",
+    "category" : "radio",
+    "title" : "Intermenstrual Bleeding",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Present", "Absent" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 10
+  }, {
+    "segmentUUID" : "ecf29857-533e-424a-885e-4bb3d68daa04",
+    "category" : "radio",
+    "title" : "Post-coital Bleeding",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Present", "Absent" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 11
+  }, {
+    "segmentUUID" : "e136ef83-6c48-4194-91de-86ea8c2f87ae",
+    "category" : "checkbox+text",
+    "title" : "Associated Systemic Symptoms",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Fatigue", "Dizziness", "Syncope", "Weight changes", "Fever", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 12
+  }, {
+    "segmentUUID" : "4dc44bc0-66e7-4aac-90bf-249a8057c836",
+    "category" : "radio",
+    "title" : "Impact on Daily Activities",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "None", "Mild interference", "Moderate interference", "Severe interference" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 13
+  }, {
+    "segmentUUID" : "5db3342b-54b3-4aa7-8e1e-4d7ba7700e0b",
+    "category" : "table",
+    "title" : "Previous Treatments Taken",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Treatment type", "Duration", "Response" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 14
+  }, {
+    "segmentUUID" : "56fb9465-12f0-4214-8d52-10a2020e77fd",
+    "category" : "text",
+    "title" : "Clinical Examination Summary",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 15
+  }, {
+    "segmentUUID" : "26b4ceaf-b13a-48d4-a9fa-be31c540d86a",
+    "category" : "text",
+    "title" : "Provisional Menstrual Disorder Diagnosis",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 16
+  }, {
+    "segmentUUID" : "cc84d7ca-9165-416c-a6b8-135f0dc65b17",
+    "category" : "checkbox+table",
+    "title" : "Planned Investigations",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "CBC", "Ultrasound pelvis", "TSH", "Coagulation profile", "Pap smear", "Endometrial biopsy", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 17
+  }, {
+    "segmentUUID" : "ce149077-12e2-47c2-9d90-a837ef519aaa",
+    "category" : "checkbox+text",
+    "title" : "Treatment Strategy",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "NSAIDs", "Hormonal therapy", "Tranexamic acid", "Iron supplementation", "Surgical management", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 18
+  }, {
+    "segmentUUID" : "853392ed-8d9f-482c-95da-cff4731bcf63",
+    "category" : "date",
+    "title" : "Review Date",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 19
+  } ],
+  "createdOn" : "2025-12-23",
+  "createdBy" : "Nischal",
+  "department" : "Gynecology",
+  "approvalCategory" : null,
+  "version" : 0
+}

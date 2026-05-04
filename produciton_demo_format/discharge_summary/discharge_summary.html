@@ -1,0 +1,234 @@
+<!DOCTYPE html [
+        <!ENTITY gt   "&#62;">
+        <!ENTITY lt   "&#60;">
+        <!ENTITY nbsp "&#160;">
+]>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Discharge Summary</title>
+
+<style>
+body{ margin:0; font-family: Arial, sans-serif; font-size:11px; color:#000; }
+.page{ padding:12px; }
+
+.header{
+  border-bottom:2px solid #000;
+  padding-bottom:6px;
+  margin-bottom:6px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.hospital-name{ font-size:16px; font-weight:700; }
+.hospital-tagline{ font-size:10px; margin-top:2px; }
+.hospital-details{ font-size:10px; margin-top:4px; }
+
+.patient-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:10px;
+  margin-top:4px;
+}
+.patient-table td{ padding:3px 5px; }
+
+.patient-divider{
+  border-top:2px solid #000;
+  margin:4px 0 6px 0;
+}
+
+.section-title{
+  font-weight:700;
+  font-size:11px;
+  margin:6px 0 2px 0;
+  border-bottom:1px solid #000;
+  padding-bottom:1px;
+}
+
+.text-block{
+  font-size:10px;
+  margin-bottom:6px;
+}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:10px;
+  margin-top:4px;
+}
+.table th, .table td{
+  border:1px solid #000;
+  padding:4px;
+  text-align:left;
+}
+
+.footer{
+  margin-top:8px;
+  font-size:9px;
+  text-align:center;
+  border-top:1px solid #000;
+  padding-top:3px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="hospital-name">CITY General Hospital</div>
+      <div class="hospital-tagline">Care • Compassion • Commitment</div>
+      <div class="hospital-details">
+        City Main Road, Ahmedabad | Ph: 987656789 | Email: dyummy@gmial.com
+      </div>
+    </div>
+
+    <div style="text-align:right; font-size:10px;">
+      <strong>Document No:</strong> {{document_no}}<br/>
+      <strong>Date:</strong> {{discharge_date_time}}
+    </div>
+  </div>
+
+  <!-- PATIENT -->
+  <table class="patient-table">
+    <tr>
+      <td><strong>Name:</strong> {{patient_name}}</td>
+      <td><strong>Age:</strong> {{patient_age}}</td>
+      <td><strong>Gender:</strong> {{patient_gender}}</td>
+    </tr>
+    <tr>
+      <td><strong>UHID:</strong> {{patient_id}}</td>
+      <td><strong>Phone:</strong> {{phone_number}}</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <div class="patient-divider"></div>
+
+  <!-- ADMISSION DETAILS -->
+  <div class="section-title">Admission Details</div>
+  <div class="text-block">
+    <strong>Admission Date:</strong> {{admission_date_time}}<br/>
+    <strong>Discharge Date:</strong> {{discharge_date_time}}
+  </div>
+
+  <!-- CLINICAL DETAILS -->
+  <div class="section-title">Clinical Details</div>
+  <div class="text-block"><strong>Chief Complaints:</strong> {{chief_complaints}}</div>
+  <div class="text-block"><strong>History of Present Illness:</strong> {{history_of_present_illness}}</div>
+  <div class="text-block"><strong>Past History:</strong> {{past_history}}</div>
+  <div class="text-block"><strong>Allergy History:</strong> {{allergy_history}}</div>
+
+  <!-- DIAGNOSIS -->
+  <div class="section-title">Diagnosis</div>
+  <div class="text-block">
+    <strong>Provisional Diagnosis:</strong> {{provisional_diagnosis}}<br/>
+    <strong>Final Diagnosis:</strong> {{final_diagnosis}}<br/>
+    <strong>ICD Code:</strong> {{icd_code}}
+  </div>
+
+  <!-- INVESTIGATIONS -->
+  <div class="section-title">Investigations</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Investigation</th>
+        <th>Result</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{investigations_summary}}
+    </tbody>
+  </table>
+
+  <!-- PROCEDURES -->
+  <div class="section-title">Procedures / Surgeries</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Procedure</th>
+        <th>Date</th>
+        <th>Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{procedures_surgeries}}
+    </tbody>
+  </table>
+
+  <!-- HOSPITAL COURSE -->
+  <div class="section-title">Hospital Course</div>
+  <div class="text-block">{{hospital_course_summary}}</div>
+
+  <!-- MEDICATIONS DURING STAY -->
+  <div class="section-title">Medications During Stay</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Drug</th>
+        <th>Dose</th>
+        <th>Frequency</th>
+        <th>Route</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{medications_during_stay}}
+    </tbody>
+  </table>
+
+  <!-- CONDITION -->
+  <div class="section-title">Condition at Discharge</div>
+  <div class="text-block">{{condition_at_discharge}}</div>
+
+  <!-- DISCHARGE MEDICATION -->
+  <div class="section-title">Discharge Medications</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Drug</th>
+        <th>Dose</th>
+        <th>Frequency</th>
+        <th>Duration</th>
+        <th>Route</th>
+        <th>Instructions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{discharge_medications}}
+    </tbody>
+  </table>
+
+  <!-- ADVICE -->
+  <div class="section-title">Advice on Discharge</div>
+  <div class="text-block"><strong>Diet:</strong> {{diet_advice}}</div>
+  <div class="text-block"><strong>Activity:</strong> {{activity_restrictions}}</div>
+  <div class="text-block"><strong>Wound Care:</strong> {{wound_care_instructions}}</div>
+
+  <!-- WARNING SIGNS -->
+  <div class="section-title">Warning Signs</div>
+  <div class="text-block">{{warning_signs_explained}}</div>
+
+  <!-- FOLLOW UP -->
+  <div class="section-title">Follow-up</div>
+  <div class="text-block">
+    <strong>Date:</strong> {{follow_up_date}}<br/>
+    <strong>Instructions:</strong> {{follow_up_instructions}}
+  </div>
+
+  <!-- EMERGENCY -->
+  <div class="section-title">Emergency Instructions</div>
+  <div class="text-block">{{emergency_instructions}}</div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Discharge summary generated electronically. Follow instructions strictly.
+  </div>
+
+</div>
+
+</body>
+</html>

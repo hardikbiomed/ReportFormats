@@ -1,0 +1,217 @@
+<!DOCTYPE html [
+  <!ENTITY gt   "&#62;">
+  <!ENTITY lt   "&#60;">
+  <!ENTITY nbsp "&#160;">
+]>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8"/>
+<title>menstrual_disorder_assessment_form</title>
+
+<style>
+@page{
+  size:A4;
+  margin:30mm 12mm 22mm 12mm;
+  @top-center{ content:element(pageheader); }
+  @bottom-center{ content:element(footer); }
+  @bottom-left{
+    content:"";
+    display:block;
+    width:100%;
+    border-top:1px solid #0b5470;
+    margin-bottom:6mm;
+  }
+}
+
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  font-size:12px;
+  color:#111;
+}
+
+/* ================= HEADER ================= */
+.header{
+  position:running(pageheader);
+  border-bottom:2px solid #0b5470;
+  padding-bottom:6mm;
+}
+
+.header-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.header-left{
+  text-align:left;
+}
+
+.header-right{
+  text-align:right;
+  font-size:11px;
+  line-height:1.6;
+}
+
+.hospital-name{
+  font-size:16px;
+  font-weight:700;
+  color:#0b5470;
+}
+
+.hospital-sub{
+  font-size:11px;
+  color:#4a4a4a;
+  text-transform:capitalize;
+}
+
+.placeholder{
+  display:inline-block;
+  min-width:90px;
+  border-bottom:1px solid #999;
+}
+
+/* ================= SECTIONS ================= */
+.section-title{
+  margin-top:14px;
+  margin-bottom:6px;
+  padding:6px 8px;
+  background:#f0f6f9;
+  border-left:4px solid #0b5470;
+  font-weight:700;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  color:#0b5470;
+}
+
+table.form{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0 8px;
+}
+
+th.label{
+  width:34%;
+  text-align:left;
+  font-weight:600;
+  color:#0b5470;
+  vertical-align:top;
+}
+
+td.field{
+  padding:6px 8px;
+  border:1px solid #dedede;
+  border-radius:6px;
+  background:#fafafa;
+}
+
+.value{
+  min-height:32px;
+  line-height:1.45;
+  white-space:pre-wrap;
+}
+
+.value.large{
+  min-height:70px;
+}
+
+tr{ page-break-inside:avoid; }
+
+/* ================= FOOTER ================= */
+.footer{
+  position:running(footer);
+  font-size:10px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+  <table class="header-table">
+    <tr>
+      <td class="header-left">
+        <div class="hospital-name">CITY GENERAL HOSPITAL</div>
+        <div class="hospital-sub">menstrual disorder assessment</div>
+      </td>
+      <td class="header-right">
+	    Patient Name: <span class="placeholder">{{patientname}}</span><br/>
+        UHID: <span class="placeholder">{{uhid}}</span><br/>
+        Assessment date: <span class="placeholder">{{assessmentdate}}</span>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- ================= MENSTRUAL HISTORY ================= -->
+<div class="section-title">menstrual history</div>
+<table class="form">
+<tbody>
+<tr><th class="label">Age at menarche</th><td class="field"><div class="value">{{ageatmenarche}}</div></td></tr>
+<tr><th class="label">Cycle regularity</th><td class="field"><div class="value">{{cycleregularity}}</div></td></tr>
+<tr><th class="label">Cycle length</th><td class="field"><div class="value">{{cyclelength}}</div></td></tr>
+<tr><th class="label">Duration of bleeding</th><td class="field"><div class="value">{{durationofbleeding}}</div></td></tr>
+<tr><th class="label">Amount of bleeding</th><td class="field"><div class="value">{{amountofbleeding}}</div></td></tr>
+<tr><th class="label">Presence of clots</th><td class="field"><div class="value">{{presenceofclots}}</div></td></tr>
+<tr><th class="label">Dysmenorrhea severity</th><td class="field"><div class="value">{{dysmenorrheaseverity}}</div></td></tr>
+</tbody>
+</table>
+
+<!-- ================= BLEEDING PATTERNS ================= -->
+<div class="section-title">bleeding patterns</div>
+<table class="form">
+<tbody>
+<tr><th class="label">Intermenstrual bleeding</th><td class="field"><div class="value">{{intermenstrualbleeding}}</div></td></tr>
+<tr><th class="label">Post-coital bleeding</th><td class="field"><div class="value">{{postcoitalbleeding}}</div></td></tr>
+</tbody>
+</table>
+
+<!-- ================= IMPACT AND SYMPTOMS ================= -->
+<div class="section-title">impact and symptoms</div>
+<table class="form">
+<tbody>
+<tr><th class="label">Associated systemic symptoms</th><td class="field"><div class="value large">{{associatedsystemicsymptoms}}</div></td></tr>
+<tr><th class="label">Impact on daily activities</th><td class="field"><div class="value">{{impactondailyactivities}}</div></td></tr>
+</tbody>
+</table>
+
+<!-- ================= PAST CARE ================= -->
+<div class="section-title">previous care</div>
+<table class="form">
+<tbody>
+<tr><th class="label">Previous treatments taken</th><td class="field"><div class="value large">{{previoustreatmentstaken}}</div></td></tr>
+</tbody>
+</table>
+
+<!-- ================= ASSESSMENT AND PLAN ================= -->
+<div class="section-title">assessment and plan</div>
+<table class="form">
+<tbody>
+<tr><th class="label">Clinical examination summary</th><td class="field"><div class="value large">{{clinicalexaminationsummary}}</div></td></tr>
+<tr><th class="label">Provisional menstrual disorder diagnosis</th><td class="field"><div class="value">{{provisionalmenstrualdisorderdiagnosis}}</div></td></tr>
+<tr><th class="label">Planned investigations</th><td class="field"><div class="value large">{{plannedinvestigations}}</div></td></tr>
+<tr><th class="label">Treatment strategy</th><td class="field"><div class="value large">{{treatmentstrategy}}</div></td></tr>
+<tr><th class="label">Review date</th><td class="field"><div class="value">{{reviewdate}}</div></td></tr>
+<tr>
+  <th class="label">Consultant name</th>
+  <td class="field"><div class="value">{{consultantname}}</div></td>
+</tr>
+
+<tr>
+  <th class="label">Consultant signature</th>
+  <td class="field">
+    <div class="value" style="min-height:50px;"></div>
+  </td>
+</tr>
+</tbody>
+</table>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer"></div>
+
+</body>
+</html>

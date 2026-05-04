@@ -1,0 +1,120 @@
+{
+  "reporttemplateUUID" : "596a740a-43a8-4fa2-8338-e4284378ffd1",
+  "name" : "Gynecology Discharge Summary",
+  "reportTemplateSegments" : [ {
+    "segmentUUID" : "e9619053-940f-479b-b52a-d53c225f29dc",
+    "category" : "text",
+    "title" : "UHID",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 1
+  }, {
+    "segmentUUID" : "2e6855aa-3010-4d49-9b60-ed0d0bd42bd6",
+    "category" : "date",
+    "title" : "Admission Date",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 2
+  }, {
+    "segmentUUID" : "04c27bc7-17a6-4bd1-9639-84b84f4e3213",
+    "category" : "date",
+    "title" : "Discharge Date",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 3
+  }, {
+    "segmentUUID" : "a69d446f-343a-4655-b78e-6867444a09f7",
+    "category" : "text",
+    "title" : "Final Diagnosis",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 4
+  }, {
+    "segmentUUID" : "386497ae-ae8a-4ffb-ae97-77f072afc3c1",
+    "category" : "text",
+    "title" : "Hospital Course Summary",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : null,
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 5
+  }, {
+    "segmentUUID" : "9d5229e1-b4fc-42e2-aee6-2d7c79cd62a1",
+    "category" : "table",
+    "title" : "Procedures Performed",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Procedure name", "Date", "Remarks" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 6
+  }, {
+    "segmentUUID" : "82aa923c-cb03-456a-870e-e70518115bba",
+    "category" : "table",
+    "title" : "Investigation Results Summary",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Investigation", "Result", "Date" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 7
+  }, {
+    "segmentUUID" : "0633fcc1-5d7d-442d-8f3c-7153aa51874a",
+    "category" : "table",
+    "title" : "Discharge Medications",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Drug name", "Dose", "Frequency", "Duration", "Special instructions" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 8
+  }, {
+    "segmentUUID" : "8404efdb-de0f-4c96-99be-acef95110d7e",
+    "category" : "checkbox+text",
+    "title" : "Activity Restrictions",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Bed rest", "Avoid heavy lifting", "Avoid strenuous activity", "Pelvic rest", "Other" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 9
+  }, {
+    "segmentUUID" : "cbf22e80-2441-450d-9e72-7f065df550ba",
+    "category" : "checkbox",
+    "title" : "Warning Signs Explained",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Fever", "Excessive bleeding", "Severe abdominal pain", "Foul-smelling discharge", "Vomiting", "Breathlessness", "Wound discharge" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 10
+  }, {
+    "segmentUUID" : "a2594cd9-ace7-42f0-88d2-353e7409ee4a",
+    "category" : "number+dropdown",
+    "title" : "Follow-up Appointment Details",
+    "mandatory" : null,
+    "uiType" : null,
+    "uiOptions" : [ "Days", "Weeks" ],
+    "webContent" : "",
+    "textContent" : "",
+    "segmentOrder" : 11
+  } ],
+  "createdOn" : "2025-12-23",
+  "createdBy" : "Nischal",
+  "department" : "Gynecology",
+  "approvalCategory" : null,
+  "version" : 0
+}

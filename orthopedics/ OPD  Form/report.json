@@ -1,0 +1,149 @@
+{
+  "reporttemplateUUID" : "74eb4627-3c5c-497d-a6ac-5d15e180e2ea",
+  "name" : "Orthopedic OPD Consultation and Diagnosis Form",
+  "reportTemplateSegments" : [ {
+    "segmentUUID" : "d809999c-eb95-475b-9854-3fa3a14ad48a",
+    "category" : "text",
+    "title" : "UHID",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 1
+  }, {
+    "segmentUUID" : "9392d275-ff6d-4872-9c30-9bfb45dc202f",
+    "category" : "visit_date",
+    "title" : "Visit Date",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 2
+  }, {
+    "segmentUUID" : "e3dfc637-db85-479d-b245-de0e968942aa",
+    "category" : "text",
+    "title" : "Age",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 3
+  }, {
+    "segmentUUID" : "4f1d5819-7bc2-472a-a17c-dc5c78b958b1",
+    "category" : "text",
+    "title" : "Gender",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 4
+  }, {
+    "segmentUUID" : "4c9318f8-98e5-4142-8293-9d1aab94c0f2",
+    "category" : "text",
+    "title" : "Chief Complaints",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 5
+  }, {
+    "segmentUUID" : "d2a4bf7c-7a95-4404-8f98-f1fe80f0f0e3",
+    "category" : "text",
+    "title" : "History Of Present Illness",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 6
+  }, {
+    "segmentUUID" : "bb56116a-e113-4ca9-9e21-452d4ba2d3b3",
+    "category" : "text",
+    "title" : "History Of Trauma Fall",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 7
+  }, {
+    "segmentUUID" : "c76a363d-7264-4f42-bbdd-5600003c749c",
+    "category" : "text",
+    "title" : "Past Orthopedic History",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 8
+  }, {
+    "segmentUUID" : "95ee4c1b-e6dc-4c40-9db3-eec8bfb1f001",
+    "category" : "text",
+    "title" : "Past Medical History",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 9
+  }, {
+    "segmentUUID" : "dd87b54b-02b1-441c-a68c-7b99e61ab4ee",
+    "category" : "text",
+    "title" : "Drug History Allergies",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 10
+  }, {
+    "segmentUUID" : "cd8c64fb-fe89-4f6e-b86f-9645bc34968a",
+    "category" : "text",
+    "title" : "General Examination",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 11
+  }, {
+    "segmentUUID" : "f03e2fe3-9545-42ac-a901-55d64b590adf",
+    "category" : "text",
+    "title" : "Local Musculoskeletal Examination",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 12
+  }, {
+    "segmentUUID" : "12fd55e7-d243-41f0-8708-d6262593858f",
+    "category" : "text",
+    "title" : "Neurovascular Status",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 13
+  }, {
+    "segmentUUID" : "d6b04bca-3cb7-44ce-9cc2-295e997daa26",
+    "category" : "text",
+    "title" : "Provisional Diagnosis",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 14
+  }, {
+    "segmentUUID" : "f844ffca-edda-4f81-9da5-85ef1e5c02e6",
+    "category" : "text",
+    "title" : "Differential Diagnosis",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 15
+  }, {
+    "segmentUUID" : "781dcff3-4310-4a91-9a85-be72da6b3cee",
+    "category" : "text",
+    "title" : "Investigations Advised",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 16
+  }, {
+    "segmentUUID" : "0b0e6e46-cffd-47d8-bfe3-8b49affd334f",
+    "category" : "text",
+    "title" : "Treatment Plan",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 17
+  }, {
+    "segmentUUID" : "f8c0366f-e0cf-4452-8654-795152b4d1ba",
+    "category" : "text",
+    "title" : "Follow Up Advice",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 18
+  }, {
+    "segmentUUID" : "27f4951b-9d6a-4a9f-b11b-12f45a2b3b0e",
+    "category" : "text",
+    "title" : "Consultant Name",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 19
+  }, {
+    "segmentUUID" : "302df3a5-6393-49e9-a6c3-45dea1cb7af0",
+    "category" : "text",
+    "title" : "Consultant Signature",
+    "webContent" : null,
+    "textContent" : null,
+    "segmentOrder" : 20
+  } ],
+  "createdOn" : "2025-12-23",
+  "createdBy" : "Nischal",
+  "department" : "Orthopedics",
+  "version" : 0
+}

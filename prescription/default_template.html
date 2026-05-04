@@ -88,10 +88,10 @@ body{
 }
 
 .single-row td{
-  width:33.33%;
+  width:100%; /* Ensures full width for each row */
   vertical-align:top;
   padding:2px 4px;
-  white-space:nowrap;   /* IMPORTANT: prevents wrapping */
+  white-space:normal;   /* Allows line breaks */
   overflow:hidden;
   text-overflow:clip;
 }
@@ -184,7 +184,11 @@ body{
   <table class="single-row">
     <tr>
       <td><strong>Complaints:</strong> {{complaints}}</td>
+    </tr>
+    <tr>
       <td><strong>Allergies:</strong> {{allergies}}</td>
+    </tr>
+    <tr>
       <td><strong>Diagnosis:</strong> {{diagnosis}}</td>
     </tr>
   </table>

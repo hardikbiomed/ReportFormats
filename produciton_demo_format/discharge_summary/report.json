@@ -1,0 +1,185 @@
+{
+  "reporttemplateUUID": "3a7d1b60-8c2a-4b9e-91d2-6e3f2c81b002",
+  "name": "Discharge Summary",
+  "department": "Cardiology",
+  "version": 1,
+  "createdOn": "2026-04-30",
+  "createdBy": "System",
+  "reportTemplateSegments": [
+
+    {
+      "segmentUUID": "seg-001",
+      "category": "date",
+      "title": "Admission Date & Time",
+      "mandatory": true,
+      "segmentOrder": 1
+    },
+    {
+      "segmentUUID": "seg-002",
+      "category": "date",
+      "title": "Discharge Date & Time",
+      "mandatory": true,
+      "segmentOrder": 2
+    },
+
+    {
+      "segmentUUID": "seg-003",
+      "category": "textarea",
+      "title": "Chief Complaints",
+      "mandatory": true,
+      "segmentOrder": 3
+    },
+    {
+      "segmentUUID": "seg-004",
+      "category": "textarea",
+      "title": "History of Present Illness",
+      "mandatory": true,
+      "segmentOrder": 4
+    },
+    {
+      "segmentUUID": "seg-005",
+      "category": "textarea",
+      "title": "Past History",
+      "mandatory": false,
+      "segmentOrder": 5
+    },
+    {
+      "segmentUUID": "seg-006",
+      "category": "textarea",
+      "title": "Allergy History",
+      "mandatory": true,
+      "segmentOrder": 6
+    },
+
+    {
+      "segmentUUID": "seg-007",
+      "category": "text",
+      "title": "Provisional Diagnosis",
+      "mandatory": true,
+      "segmentOrder": 7
+    },
+    {
+      "segmentUUID": "seg-008",
+      "category": "text",
+      "title": "Final Diagnosis",
+      "mandatory": true,
+      "segmentOrder": 8
+    },
+    {
+      "segmentUUID": "seg-009",
+      "category": "text",
+      "title": "ICD Code",
+      "mandatory": false,
+      "segmentOrder": 9
+    },
+
+    {
+      "segmentUUID": "seg-010",
+      "category": "table",
+      "title": "Investigations Summary",
+      "mandatory": false,
+      "uiOptions": ["Investigation", "Result", "Date"],
+      "segmentOrder": 10
+    },
+
+    {
+      "segmentUUID": "seg-011",
+      "category": "table",
+      "title": "Procedures / Surgeries",
+      "mandatory": false,
+      "uiOptions": ["Procedure Name", "Date", "Remarks"],
+      "segmentOrder": 11
+    },
+
+    {
+      "segmentUUID": "seg-012",
+      "category": "textarea",
+      "title": "Hospital Course Summary",
+      "mandatory": true,
+      "segmentOrder": 12
+    },
+
+    {
+      "segmentUUID": "seg-013",
+      "category": "table",
+      "title": "Medications During Stay",
+      "mandatory": false,
+      "uiOptions": ["Drug Name", "Dose", "Frequency", "Route"],
+      "segmentOrder": 13
+    },
+
+    {
+      "segmentUUID": "seg-014",
+      "category": "dropdown",
+      "title": "Condition at Discharge",
+      "mandatory": true,
+      "uiOptions": ["Stable", "Improved", "Critical", "DAMA", "Expired"],
+      "segmentOrder": 14
+    },
+
+    {
+      "segmentUUID": "seg-015",
+      "category": "table",
+      "title": "Discharge Medications",
+      "mandatory": true,
+      "uiOptions": ["Drug Name (Generic)", "Dose", "Frequency", "Duration", "Route", "Instructions"],
+      "segmentOrder": 15
+    },
+
+    {
+      "segmentUUID": "seg-016",
+      "category": "textarea",
+      "title": "Diet Advice",
+      "mandatory": true,
+      "segmentOrder": 16
+    },
+    {
+      "segmentUUID": "seg-017",
+      "category": "checkbox+text",
+      "title": "Activity Restrictions",
+      "mandatory": false,
+      "uiOptions": ["Bed Rest", "No Heavy Lifting", "Limited Activity", "Other"],
+      "segmentOrder": 17
+    },
+    {
+      "segmentUUID": "seg-018",
+      "category": "textarea",
+      "title": "Wound Care Instructions",
+      "mandatory": false,
+      "segmentOrder": 18
+    },
+
+    {
+      "segmentUUID": "seg-019",
+      "category": "checkbox",
+      "title": "Warning Signs Explained",
+      "mandatory": true,
+      "uiOptions": ["Fever", "Bleeding", "Pain", "Breathlessness", "Vomiting", "Infection"],
+      "segmentOrder": 19
+    },
+
+    {
+      "segmentUUID": "seg-020",
+      "category": "date",
+      "title": "Follow-up Date",
+      "mandatory": true,
+      "segmentOrder": 20
+    },
+    {
+      "segmentUUID": "seg-021",
+      "category": "text",
+      "title": "Follow-up Instructions",
+      "mandatory": true,
+      "segmentOrder": 21
+    },
+
+    {
+      "segmentUUID": "seg-022",
+      "category": "text",
+      "title": "Emergency Instructions",
+      "mandatory": true,
+      "segmentOrder": 22
+    }
+
+  ]
+}
